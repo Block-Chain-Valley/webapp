@@ -14,6 +14,8 @@ const Login = () => {
   const loginHandler = () => {
     // address from some blockchain network api
     setAddress('0x00101010100010101010010101010');
+
+    // if address load success, run below function
     authCtx.onLogin(address);
   };
 

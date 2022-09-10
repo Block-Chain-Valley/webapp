@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, SafeAreaView } from 'react';
 import styles from './App.module.css';
 import AuthContext from './store/auth-context';
 import Login from './components/Login/Login';
@@ -9,10 +9,11 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <main>
+      {/* <SafeAreaView style={{ flex: 0, backgroundColor: 'red' }} /> */}
+      <div className={styles.mainContainer}>
         {!ctx.isLoggedIn && <Login />}
         {ctx.isLoggedIn && <Home />}
-      </main>
+      </div>
     </React.Fragment>
   );
 };
