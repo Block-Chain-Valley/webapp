@@ -9,7 +9,6 @@ const App = () => {
 
   return (
     <React.Fragment>
-      {/* <SafeAreaView style={{ flex: 0, backgroundColor: 'red' }} /> */}
       <div className={styles.mainContainer}>
         {!ctx.isLoggedIn && <Login />}
         {ctx.isLoggedIn && <Home />}
