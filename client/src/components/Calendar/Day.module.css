@@ -1,10 +1,45 @@
-.number {
-  width: 1.5rem;
+.container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.number {
+  width: 1.7rem;
+  height: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
 .subNumber {
   color: lightgrey;
+}
+
+.inverted {
+  color: white;
+  background-color: #022484;
+}
+
+.statePoint {
+  position: relative;
+  left: 0.85rem;
+  top: 0.35rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 1rem;
+}
+
+.attend {
+  background-color: #1ab373;
+}
+
+.absence {
+  background-color: #e91d1d;
+}
+
+.late {
+  background-color: #ffd600;
 }

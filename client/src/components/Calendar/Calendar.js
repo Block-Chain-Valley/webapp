@@ -26,6 +26,7 @@ const dateTxt = {
 
 const Calendar = () => {
   const today = new Date();
+
   const [monthDate, setMonthDate] = useState(getMonthDate(getNewDateObj(today)));
 
   const monthHandler = side => {
@@ -50,14 +51,21 @@ const Calendar = () => {
     }
   };
 
-  const isEmptyObj = obj => {
-    if (obj.constructor === Object && Object.keys(obj).length === 0) {
-      return true;
-    }
-    return false;
-  };
-
   const isDayInMonth = (thisMonth, currentMonth) => thisMonth === currentMonth;
+  const isToday = (year, month, day) => {
+    if (year !== today.getFullYear()) {
+      return false;
+    }
+
+    if (month !== today.getMonth() + 1) {
+      return false;
+    }
+
+    if (day !== today.getDate()) {
+      return false;
+    }
+    return true;
+  };
 
   return (
     <Card>
@@ -84,7 +92,11 @@ const Calendar = () => {
         : monthDate.date.map((week, idx) => (
             <div className={styles.dayContainer} key={idx.toString()}>
               {week.map((date, idx) => (
-                <Day isThisMonth={isDayInMonth(monthDate.month, date.month)} key={idx.toString()}>
+                <Day
+                  isThisMonth={isDayInMonth(monthDate.month, date.month)}
+                  isToday={isToday(date.year, date.month, date.date)}
+                  attendance={''}
+                  key={idx.toString()}>
                   {date.date}
                 </Day>
               ))}
