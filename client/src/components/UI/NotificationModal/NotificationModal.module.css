@@ -1,0 +1,52 @@
+.container {
+  padding: 0.5rem;
+  position: fixed;
+  z-index: 100;
+  width: 87vw;
+  min-height: 3rem;
+  max-height: 4rem;
+  display: flex;
+  align-items: center;
+  top: -6rem;
+
+  animation: notification 3s ease-in-out;
+}
+
+@-webkit-keyframes notification {
+  0% {
+    top: -6rem;
+  }
+  7% {
+    top: 0rem;
+  }
+  93% {
+    top: 0rem;
+  }
+  100% {
+    top: -6rem;
+  }
+}
+
+@keyframes notification {
+  0% {
+    top: -6rem;
+  }
+  7% {
+    top: 0rem;
+  }
+  93% {
+    top: 0rem;
+  }
+  100% {
+    top: -6rem;
+  }
+}
+
+.icon {
+  margin: 0 1rem 0 0.5rem;
+}
+
+.text {
+  font-size: 1rem;
+  font-weight: bold;
+}

@@ -9,17 +9,13 @@ const attendCheck = [
   { state: '결석', style: styles.red },
 ];
 
-const AttendCard = props => {
-  const temp = 0;
-
-  return (
-    <Card className={styles.container}>
-      <div className={styles.title}>오늘의 출결</div>
-      <div className={`${styles.attendTxt} ${attendCheck[props.attendState].style} `}>
-        {attendCheck[props.attendState].state}
-      </div>
-    </Card>
-  );
-};
+const AttendCard = props => (
+  <Card className={styles.container}>
+    <div className={styles.title}>오늘의 출결</div>
+    <div className={`${styles.attendTxt} ${attendCheck[props.attendState].style} `}>
+      {attendCheck[props.attendState].state}
+    </div>
+  </Card>
+);
 
 export default AttendCard;
