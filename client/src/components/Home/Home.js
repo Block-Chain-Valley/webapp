@@ -29,7 +29,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => setShowNotification(false), 6000);
+    setTimeout(() => setShowNotification(false), 5000);
   }, []);
 
   return (
@@ -37,7 +37,16 @@ const Home = () => {
       {showNotification ? <NotificationModal message={notificationMessage} /> : ''}
       <Calendar />
       {showAttendState ? <AttendCard attendState={attendState} /> : ''}
-      {showPresenter ? <PresenterCard presenterName={presenterName} votingState={votingState} /> : ''}
+      {showPresenter ? (
+        <PresenterCard
+          presenterName={presenterName}
+          votingState={votingState}
+          notificationHandler={notificationHandler}
+          setVotingState={setVotingState}
+        />
+      ) : (
+        ''
+      )}
       <SmallButton onClick={logoutHandler}>로그아웃</SmallButton>
       <SmallButton onClick={() => notificationHandler('출석 완료!')}>알림 테스트용 버튼</SmallButton>
     </div>
