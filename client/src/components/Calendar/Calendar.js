@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Calendar.module.css';
 import Card from '../UI/Card/Card';
 import { ReactComponent as LArrow } from '../../assets/leftArrow.svg';
@@ -87,7 +87,7 @@ const Calendar = () => {
         ))}
       </div>
 
-      {monthDate.year === NaN
+      {isNaN(monthDate.year)
         ? ''
         : monthDate.date.map((week, idx) => (
             <div className={styles.dayContainer} key={idx.toString()}>

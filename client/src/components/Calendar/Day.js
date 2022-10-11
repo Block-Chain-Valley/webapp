@@ -1,28 +1,24 @@
 import React from 'react';
 import styles from './Day.module.css';
 
-const Day = props => {
-  const temp = 0;
-
-  return (
-    <div className={styles.container}>
-      <div
-        className={`${styles.statePoint} 
+const Day = props => (
+  <div className={styles.container}>
+    <div
+      className={`${styles.statePoint} 
         ${props.attendance === 'attend' ? styles.attend : ''}
         ${props.attendance === 'absence' ? styles.absence : ''}
         ${props.attendance === 'late' ? styles.late : ''}
       `}></div>
 
-      <div
-        className={`
+    <div
+      className={`
         ${styles.number} 
         ${props.isThisMonth ? '' : styles.subNumber}
         ${props.isToday ? styles.inverted : ''}
       `}>
-        {props.children}
-      </div>
+      {props.children}
     </div>
-  );
-};
+  </div>
+);
 
 export default Day;

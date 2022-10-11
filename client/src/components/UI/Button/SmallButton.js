@@ -1,6 +1,7 @@
 import styles from './SmallButton.module.css';
 
 // 0: 비활성화, 1: 발표 증명 요청, 2: 투표 중, 3: 증명 완료, 4:증명 실패, 5: 발표자 확인, 6: 확인 완료
+// 완전 컴포넌트로 분리
 const buttonState = [
   { state: '비활성화', style: styles.hide },
   { state: '발표 증명 요청', style: styles.default },
