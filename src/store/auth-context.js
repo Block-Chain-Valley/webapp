@@ -1,41 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const DEFAULT_ADDRESS = '0x0000000000000000000000000000000000000000';
+import { DEFAULT_ADDRESS } from "../constants";
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
   userAddress: DEFAULT_ADDRESS,
   onLogout: () => {},
-  onLogin: address => {},
+  onLogin: (address) => {},
 });
 
-export const AuthContextProvider = props => {
+export const AuthContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userAddress, setUserAddress] = useState(DEFAULT_ADDRESS);
 
   useEffect(() => {
-    const storedUserLoggedInInfo = localStorage.getItem('isLoggedIn');
-
-    if (storedUserLoggedInInfo === '1') {
-      setIsLoggedIn(true);
-      setUserAddress(localStorage.getItem('address'));
-    }
+    loginCheck();
   }, []);
 
+  const loginCheck = () => {
+    const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
+
+    if (storedUserLoggedInInfo === "1") {
+      setIsLoggedIn(true);
+      setUserAddress(localStorage.getItem("address"));
+    }
+  };
+
   const logoutHandler = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userAddress');
+    console.log("logout!");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userAddress");
     setIsLoggedIn(false);
   };
 
-  const loginHandler = address => {
-    localStorage.setItem('isLoggedIn', 1);
-    localStorage.setItem('userAddress', address);
+  const loginHandler = (address) => {
+    if (address === DEFAULT_ADDRESS) {
+      console.log("login fail");
+      return false;
+    }
+    console.log("login address :", address);
+    localStorage.setItem("isLoggedIn", 1);
+    localStorage.setItem("userAddress", address);
     setIsLoggedIn(true);
+    return true;
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, userAddress, onLogout: logoutHandler, onLogin: loginHandler }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        userAddress,
+        onLogout: logoutHandler,
+        onLogin: loginHandler,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
