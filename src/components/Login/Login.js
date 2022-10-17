@@ -1,18 +1,17 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import styles from "./Login.module.css";
 import logo from "../../assets/logoSymbolWithText.png";
 import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
-import { DEFAULT_ADDRESS } from "../../constants/index.js";
 
-const ethers = require("ethers");
+// const ethers = require("ethers");
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
 
   const ethers = require("ethers");
   const [isConnected, setIsConnected] = useState(true);
-  const [signer, setSigner] = useState();
+  // const [signer, setSigner] = useState();
 
   const loginHandler = () => {
     wallecConnect();
@@ -26,7 +25,7 @@ const Login = () => {
         let connectedProvider = new ethers.providers.Web3Provider(
           window.ethereum
         );
-        setSigner(connectedProvider.getSigner());
+        // setSigner(connectedProvider.getSigner());
         connectedProvider
           .getSigner()
           .getAddress()

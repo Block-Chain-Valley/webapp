@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./App.module.css";
 import AuthContext from "./store/auth-context";
 import Login from "./components/Login/Login";
